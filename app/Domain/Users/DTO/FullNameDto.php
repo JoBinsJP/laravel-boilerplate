@@ -20,38 +20,38 @@ class FullNameDto extends DataTransferObject
     {
         $explodedName = explode(' ', $name);
 
-        $firstName  = array_shift($explodedName);
-        $lastName   = array_pop($explodedName) ?? '';
+        $firstName = array_shift($explodedName);
+        $lastName = array_pop($explodedName) ?? '';
         $middleName = count($explodedName) ? trim(implode(' ', $explodedName)) : '';
 
         return new static([
-            'first_name'  => $firstName,
+            'first_name' => $firstName,
             'middle_name' => $middleName,
-            'last_name'   => $lastName,
+            'last_name' => $lastName,
         ]);
     }
 
     public function toArray(): array
     {
         return [
-            'first_name'  => $this->firstName,
+            'first_name' => $this->firstName,
             'middle_name' => $this->middleName,
-            'last_name'   => $this->lastName,
+            'last_name' => $this->lastName,
         ];
     }
 
     public function toString(): string
     {
         $fullName = [];
-        if ( $this->firstName ) {
+        if ($this->firstName) {
             $fullName[] = $this->firstName;
         }
 
-        if ( $this->middleName ) {
+        if ($this->middleName) {
             $fullName[] = $this->middleName;
         }
 
-        if ( $this->lastName ) {
+        if ($this->lastName) {
             $fullName[] = $this->lastName;
         }
 
@@ -60,8 +60,8 @@ class FullNameDto extends DataTransferObject
 
     protected function map(array $data): void
     {
-        $this->firstName  = Arr::get($data, 'first_name');
+        $this->firstName = Arr::get($data, 'first_name');
         $this->middleName = Arr::get($data, 'middle_name');
-        $this->lastName   = Arr::get($data, 'last_name');
+        $this->lastName = Arr::get($data, 'last_name');
     }
 }

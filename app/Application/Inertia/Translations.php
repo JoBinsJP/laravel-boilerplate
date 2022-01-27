@@ -13,7 +13,6 @@ use Closure;
  */
 class Translations implements InertiaDataSharable
 {
-
     public function key(): string
     {
         return 'translations';
@@ -23,9 +22,9 @@ class Translations implements InertiaDataSharable
     {
         return function () {
             $translations = new TranslationCaching();
-            $locale       = app()->getLocale();
+            $locale = app()->getLocale();
 
-            if ( app()->environment('local') ) {
+            if (app()->environment('local')) {
                 $translations->flush($locale);
             }
 

@@ -30,7 +30,7 @@ class ModulesEloquentRepository extends Repository implements ModulesRepository
         $modules = $this->getBuilder()->where('name', $name)->get();
 
         $this->resetModel();
-        if ( $modules->isEmpty() ) {
+        if ($modules->isEmpty()) {
             throw new ModelNotFoundException();
         }
 

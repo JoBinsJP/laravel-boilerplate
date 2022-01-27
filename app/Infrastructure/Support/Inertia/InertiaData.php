@@ -19,7 +19,7 @@ class InertiaData
      */
     public function get(): array
     {
-        $path      = config('inertia.shareable_path');
+        $path = config('inertia.shareable_path');
         $namespace = config('inertia.shareable_namespace');
 
         $finder = new Finder();
@@ -31,7 +31,7 @@ class InertiaData
             $class = $file->getBasename('.php');
             $class = sprintf("%s\\%s", $namespace, $class);
 
-            if ( !class_exists($class) ) {
+            if (! class_exists($class)) {
                 throw new InvalidInertiaDataSharableClassException(
                     sprintf('Inertia Class %s does not exist', $class)
                 );
@@ -39,7 +39,7 @@ class InertiaData
 
             $instance = app()->make($class);
 
-            if ( !$instance instanceof InertiaDataSharable ) {
+            if (! $instance instanceof InertiaDataSharable) {
                 throw new InvalidInertiaDataSharableClassException(
                     sprintf('Inertia Class %s does not implement InertiaDataSharable', $class)
                 );

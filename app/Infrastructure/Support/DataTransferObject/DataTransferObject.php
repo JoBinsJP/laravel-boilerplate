@@ -16,7 +16,7 @@ abstract class DataTransferObject implements DtoInterface
     {
         $validator = Validator::make($data, $this->validationRules());
 
-        if ( $validator->fails() ) {
+        if ($validator->fails()) {
             throw new InvalidArgumentException('Error: '.$validator->errors()->first());
         }
 
