@@ -9,5 +9,4 @@ namespace App\Infrastructure\Support\DataTransferObject;
  */
 interface DtoInterface
 {
-
 }

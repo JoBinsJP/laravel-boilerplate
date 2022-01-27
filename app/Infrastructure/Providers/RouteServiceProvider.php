@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            if ( app()->environment() !== 'production' ) {
+            if (app()->environment() !== 'production') {
                 Route::prefix('dev')->middleware('web')->group(base_path('routes/dev.php'));
             }
 

@@ -33,16 +33,16 @@ class RegisterNewUser implements CreatesNewUsers
 
         Validator::make($input, [
             'full_name' => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', "unique:{$usersTable},email"],
-            'password'  => $this->passwordRules(),
-            'terms'     => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            'email' => ['required', 'string', 'email', 'max:255', "unique:{$usersTable},email"],
+            'password' => $this->passwordRules(),
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
         return tap(
             app(UsersRepository::class)->create([
                 'full_name' => FullNameDto::fromString($input['full_name']),
-                'email'     => $input['email'],
-                'password'  => $input['password'],
+                'email' => $input['email'],
+                'password' => $input['password'],
             ]),
             function (User $user) {
                 $user->assignRole(Jetstream::defaultRole());

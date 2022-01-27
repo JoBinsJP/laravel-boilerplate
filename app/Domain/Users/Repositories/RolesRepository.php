@@ -11,5 +11,4 @@ use App\Infrastructure\Support\Repositories\RepositoryInterface;
  */
 interface RolesRepository extends RepositoryInterface
 {
-
 }

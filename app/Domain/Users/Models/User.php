@@ -81,7 +81,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'full_name'                 => FullNameCast::class,
+        'full_name' => FullNameCast::class,
         'two_factor_recovery_codes' => 'array',
     ];
 
@@ -112,7 +112,7 @@ class User extends Authenticatable
     public function setPasswordAttribute(string $password): void
     {
         /** @var HashManager $hashManager */
-        $hashManager                  = app()->make(HashManager::class);
+        $hashManager = app()->make(HashManager::class);
         $this->attributes['password'] = $hashManager->needsRehash($password) ? $hashManager->make($password)
             : $password;
     }

@@ -15,3 +15,4 @@ yarn-error.log
 /.vscode
 public/dist
 resources/assets/js/routes.generated.js
+.php-cs-fixer.cache

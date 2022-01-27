@@ -19,7 +19,7 @@ class TranslationCaching
             $files = File::files(resource_path("lang/{$locale}"));
 
             return collect($files)
-                ->map(fn($file) => [$file->getFilenameWithoutExtension() => require($file)])
+                ->map(fn ($file) => [$file->getFilenameWithoutExtension() => require($file)])
                 ->collapse();
         });
     }
@@ -45,7 +45,7 @@ class TranslationCaching
 
     protected function availableLocales(): array
     {
-        return collect(File::directories(resource_path('lang')))->map(fn($path) => basename($path))->toArray();
+        return collect(File::directories(resource_path('lang')))->map(fn ($path) => basename($path))->toArray();
     }
 
     protected function getCacheKey(string $locale): string
